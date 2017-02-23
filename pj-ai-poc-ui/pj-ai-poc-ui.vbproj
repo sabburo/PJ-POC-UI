@@ -34,6 +34,7 @@
     <OutputPath>bin\</OutputPath>
     <DocumentationFile>pj-ai-poc-ui.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -66,8 +67,7 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
-  <ItemGroup>
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
     <Import Include="System" />
@@ -92,15 +92,73 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="01_search.html" />
+    <Content Include="02_listen.html" />
+    <Content Include="03_answer.html" />
     <Content Include="css\bootstrap-theme.css" />
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="data\FloorMap.png" />
+    <Content Include="data\Q10_1.jpg" />
+    <Content Include="data\Q10_2.jpg" />
+    <Content Include="data\Q10_3.jpg" />
+    <Content Include="data\Q10_4.jpg" />
+    <Content Include="data\Q10_5.jpg" />
+    <Content Include="data\Q10_6.jpg" />
+    <Content Include="data\Q12_1 .jpg" />
+    <Content Include="data\Q12_2.jpg" />
+    <Content Include="data\Q12_3.jpg" />
+    <Content Include="data\Q12_4.jpg" />
+    <Content Include="data\Q12_5.jpg" />
+    <Content Include="data\Q15_1.jpg" />
+    <Content Include="data\Q15_2.jpg" />
+    <Content Include="data\Q15_3.jpg" />
+    <Content Include="data\Q15_4.jpg" />
+    <Content Include="data\Q15_5.jpg" />
+    <Content Include="data\Q30_1.jpg" />
+    <Content Include="data\Q30_2.jpg" />
+    <Content Include="data\Q30_3.jpg" />
+    <Content Include="data\Q30_4.jpg" />
+    <Content Include="data\Q30_5.jpg" />
+    <Content Include="data\Q3_1.jpg" />
+    <Content Include="data\Q3_2.jpg" />
+    <Content Include="data\Q3_3.jpg" />
+    <Content Include="data\Q3_4.jpg" />
+    <Content Include="data\Q3_5.jpg" />
+    <Content Include="data\Q7_1.jpg" />
+    <Content Include="data\Q7_2.jpg" />
+    <Content Include="data\Q7_3.jpg" />
+    <Content Include="data\Q8_1.jpg" />
+    <Content Include="data\Q8_2.jpg" />
+    <Content Include="data\Q8_3.jpg" />
+    <Content Include="data\Q8_4.jpg" />
+    <Content Include="data\Q8_5.jpg" />
+    <Content Include="data\Q9_1.jpg" />
+    <Content Include="data\Q9_2.jpg" />
+    <Content Include="data\Q9_3.jpg" />
+    <Content Include="data\Q9_4.jpg" />
+    <Content Include="data\いちご.png" />
+    <Content Include="img\Balloon_01.png" />
+    <Content Include="img\Balloon_02.png" />
+    <Content Include="img\fd400121.jpg" />
+    <Content Include="img\fd400317.jpg" />
+    <Content Include="img\maru2_500.html" />
+    <Content Include="img\sota_01.jpg" />
+    <Content Include="img\sota_01o.jpg" />
+    <Content Include="img\sota_03.jpg" />
     <Content Include="index.htm" />
+    <Content Include="index01.html" />
+    <Content Include="index02.html" />
+    <Content Include="index03.html" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\getdata.js" />
+    <Content Include="js\getdatafromfile.js" />
+    <Content Include="js\jquery-3.1.1.min.js" />
     <Content Include="js\jquery.csvToTable.js" />
     <Content Include="js\npm.js" />
+    <Content Include="style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +195,14 @@
     <Content Include="css\bootstrap-theme.min.css.map" />
     <Content Include="css\bootstrap.css.map" />
     <Content Include="css\bootstrap.min.css.map" />
+    <Content Include="data\beef.csv" />
+    <Content Include="data\body.csv" />
+    <Content Include="data\fruits.csv" />
+    <Content Include="data\gifts.csv" />
+    <Content Include="data\interior.csv" />
+    <Content Include="data\paella.csv" />
+    <Content Include="data\pot.csv" />
+    <Content Include="data\whiteday.csv" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
