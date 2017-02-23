@@ -99,6 +99,7 @@
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="data\Cash-Register-Blue.ico" />
     <Content Include="data\FloorMap.png" />
     <Content Include="data\Q10_1.jpg" />
     <Content Include="data\Q10_2.jpg" />
@@ -137,7 +138,7 @@
     <Content Include="data\Q9_1.jpg" />
     <Content Include="data\Q9_2.jpg" />
     <Content Include="data\Q9_3.jpg" />
-    <Content Include="data\Q9_4.jpg" />
+    <Content Include="data\Q9_test.jpg" />
     <Content Include="data\いちご.png" />
     <Content Include="img\Balloon_01.png" />
     <Content Include="img\Balloon_02.png" />
