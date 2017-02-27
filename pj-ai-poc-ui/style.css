@@ -17,14 +17,14 @@ div.section1 {
 
 p{
 margin: 0.3em 0px 0.2em 0px;
-font-size:350%;
+font-size:600%;
 font-weight:bold;
 font-family: "メイリオ";
 color:#008000;
 }
 h1{
 margin: 0.3em 0px 0.2em 0px;
-font-size:275%;
+font-size:400%;
 font-weight:bold;
 font-family: "メイリオ";
 color:#00c0c0;
@@ -140,9 +140,9 @@ text-align:left;
 	position: relative;
 	display: inline-block;
 	padding: 0 15px;
-	width: 500px;
+	width: 800px;
 	min-width: 115px;
-	height: 60px ;
+	height: 210px ;
 	line-height: 34px;
 	color: #00c0c0;
 	text-align: center;
@@ -227,9 +227,9 @@ text-align:left;
 	position: relative;
 	display: inline-block;
 	padding: 0 15px;
-	width: 500px;
+	width: 800px;
 	min-width: 115px;
-	height: 100px ;
+	height: 210px ;
 	line-height: 34px;
 	color: #00c0c0;
 	text-align: center;
