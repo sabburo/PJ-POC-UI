@@ -1,8 +1,9 @@
 $(function(){
 
 //JSONデータ
-var data = {  info1: "お客さん、牛肉いいのが入ったよ！", 
-              info2: "＃ステーキ　＃しゃぶしゃぶ　＃焼肉　＃焼肉のたれ　＃ごまだれ"
+    var data = {
+        info1: "店内に専用相談コーナーがあるよ。",
+              info2: ""
 }
 var data1 = {"release": [
 {

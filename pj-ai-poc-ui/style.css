@@ -241,6 +241,67 @@ text-align:left;
 	z-index: 0;
 }
 
+/* balloon-3 right */
+.balloon-3-right {
+	position: relative;
+	display: inline-block;
+	padding: 0 15px;
+	width: auto;
+	min-width: 115px;
+	height: auto;
+	line-height: 34px;
+	color: #00c0c0;
+	text-align: center;
+	background: #F6F6F6;
+	border: 3px solid #00c0c0;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+	z-index: 0;
+}
+.balloon-3-right:before {
+	content: "";
+	position: absolute;
+	top: 50%; right: -8px;
+	margin-top: -9px;
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 9px 0 9px 9px;
+	border-color: transparent transparent transparent #F6F6F6;
+	z-index: 0;
+}
+.balloon-3-right:after {
+	content: "";
+	position: absolute;
+	top: 50%; right: -12px;
+	margin-top: -10px;
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-style: solid;
+	border-width: 10px 0 10px 10px;
+	border-color: transparent transparent transparent #00c0c0;
+	z-index: -1;
+}
+.balloon-3-right {
+	position: relative;
+	display: inline-block;
+	padding: 0 15px;
+	width: 880px;
+	min-width: 115px;
+	height: 210px ;
+	line-height: 34px;
+	color: #00c0c0;
+	text-align: center;
+	vertical-align: middle;
+	background: #F6F6F6;
+	border: 3px solid #00c0c0;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+	z-index: 0;
+}
+
 .bubble {
   position: relative;
   width: 360px;
