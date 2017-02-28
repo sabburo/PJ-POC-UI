@@ -219,6 +219,7 @@
     <Content Include="js\getdatafromfile.js" />
     <Content Include="js\jquery-3.1.1.min.js" />
     <Content Include="js\jquery.csvToTable.js" />
+    <Content Include="js\load.js" />
     <Content Include="js\npm.js" />
     <Content Include="style.css" />
     <Content Include="Web.config" />
