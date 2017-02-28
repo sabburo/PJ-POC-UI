@@ -31,13 +31,63 @@ document is confidential and proprietary to Microsoft. It is disclosed and can b
     <script src="js/jquery.csvToTable.js"></script>
     <!--<script src="speech.1.0.0.js" type="text/javascript"></script>-->
     <script type="text/javascript">
-        var client;
-        var request;
+        function init() {
+            try{
+                ws = new WebSocket('ws://' + 'aipocweb.azurewebsites.net' + '/apis/wsserver');
 
-        function setAnswer(text) {
-            //document.getElementById("output").value += text;
-            document.getElementById("output_answer").value = text;
-        }
+                function open() {
+                    if (ws == null) {
+                        // WebSocket の初期化
+                        ws = new WebSocket(websocketUri);
+                        document.getElementById("output").value = "呼ばれた";
+                    }
+                }
+
+                // 接続イベント
+                ws.onopen = function onOpen(evt) {
+                    //ここで待受け画面に切り替える
+                    document.getElementById("output").value = "接続/待機状態";
+                }
+
+                 // メッセージ受信イベント
+                ws.onmessage = function onMessage(evt) {
+                    if (evt && evt.data) {
+                        var jsonData = JSON.parse(evt.data);
+
+                        // 状態により画面表示を切り替える
+                        switch (jsonData["destStatus"]) {
+                            case "waitFace":
+                                document.getElementById("output").value ="待機状態";
+                                break;
+                            case "waitQuestion":
+                                document.getElementById("output").value ="質問待機";
+                                break;
+                            case "showAnswer":
+                                //document.getElementById("label1") = "回答表示";
+                                document.getElementById("output").value = jsonData["text"];
+                                break;
+                            case "endApplication":
+                                document.getElementById("output").value = "終了";
+                                break;
+                        }
+                    }
+                 }
+
+                 // エラーイベント
+                 ws.onerror = onError =  function onError(event) {
+                     //chat("エラーが発生しました。");
+                     alert("エラーが発生しました");
+                     //ここで待ち受け画面にss切り替える
+                 }
+
+                 // 切断イベント
+                 ws.onclose = function onClose(event) {
+                     //chat("切断しました。3秒後に再接続します。(" + event.code + ")");
+                     ws = null;
+                     setTimeout("open()", 3000);
+                 }
+            } catch (e) { alert(e.message); }
+        };
 
         function setCommodityTable(text) {
             metatag = text.split("#");
@@ -89,18 +139,6 @@ document is confidential and proprietary to Microsoft. It is disclosed and can b
                 }
             });         
         }
-        function rakuten() {
-            //json文字列
-            var json_data = getText();
-            //JSONをパース
-            var data = JSON.parse(json_data);
-            var keyword = data["topScoringIntent"]["intent"];
-            keyword = escape(keyword);
- 
-            document.cookie = "kensaku="+keyword;
-
-            location.href = "rakuten.html";
-        }
     </script>
 </head>
 <body style="background-color:white">
@@ -126,7 +164,7 @@ document is confidential and proprietary to Microsoft. It is disclosed and can b
         </div>
         <div class="row"></div>
         <div class="row">
-            <div class="col-sm-9"><button type="button" class="btn btn-primary" onclick="start()">話しかける</button></div>
+            <div class="col-sm-9"><button type="button" class="btn btn-primary" onclick="init()">話しかける</button></div>
             <div class="col-sm-1"></div>
             <div class="col-sm-2"></div>
         </div>
