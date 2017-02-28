@@ -34,6 +34,7 @@
     <OutputPath>bin\</OutputPath>
     <DocumentationFile>pj-ai-poc-ui.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -66,8 +67,7 @@
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
-  <ItemGroup>
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
     <Import Include="System" />
@@ -92,15 +92,135 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="01_search.html" />
+    <Content Include="02_listen.html" />
+    <Content Include="03_answer_floor.html" />
+    <Content Include="03_answer.html" />
     <Content Include="css\bootstrap-theme.css" />
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="data\Cash-Register-Blue.ico" />
+    <Content Include="data\FloorMap.png" />
+    <Content Include="data\Q10_1.jpg" />
+    <Content Include="data\Q10_2.jpg" />
+    <Content Include="data\Q10_3.jpg" />
+    <Content Include="data\Q10_4.jpg" />
+    <Content Include="data\Q10_5.jpg" />
+    <Content Include="data\Q10_6.jpg" />
+    <Content Include="data\Q11_1.jpg" />
+    <Content Include="data\Q11_2.jpg" />
+    <Content Include="data\Q11_3.jpg" />
+    <Content Include="data\Q11_4.jpg" />
+    <Content Include="data\Q11_5.jpg" />
+    <Content Include="data\Q12_1 .jpg" />
+    <Content Include="data\Q12_2.jpg" />
+    <Content Include="data\Q12_3.jpg" />
+    <Content Include="data\Q12_4.jpg" />
+    <Content Include="data\Q12_5.jpg" />
+    <Content Include="data\Q13_1.jpg" />
+    <Content Include="data\Q13_2.jpg" />
+    <Content Include="data\Q13_3.jpg" />
+    <Content Include="data\Q13_4.jpg" />
+    <Content Include="data\Q13_5.jpg" />
+    <Content Include="data\Q14_1.jpg" />
+    <Content Include="data\Q14_2.jpg" />
+    <Content Include="data\Q14_3.jpg" />
+    <Content Include="data\Q15_1.jpg" />
+    <Content Include="data\Q15_2.jpg" />
+    <Content Include="data\Q15_3.jpg" />
+    <Content Include="data\Q15_4.jpg" />
+    <Content Include="data\Q15_5.jpg" />
+    <Content Include="data\Q16_1.jpg" />
+    <Content Include="data\Q16_2.jpg" />
+    <Content Include="data\Q16_3.jpg" />
+    <Content Include="data\Q16_4.jpg" />
+    <Content Include="data\Q16_5.jpg" />
+    <Content Include="data\Q16_6.jpg" />
+    <Content Include="data\Q17_1.png" />
+    <Content Include="data\Q17_2.png" />
+    <Content Include="data\Q17_3.png" />
+    <Content Include="data\Q19_1.jpg" />
+    <Content Include="data\Q19_2.jpg" />
+    <Content Include="data\Q19_3.jpg" />
+    <Content Include="data\Q20_1.png" />
+    <Content Include="data\Q20_2.png" />
+    <Content Include="data\Q20_3.png" />
+    <Content Include="data\Q20_4.png" />
+    <Content Include="data\Q22_1.png" />
+    <Content Include="data\Q22_2.png" />
+    <Content Include="data\Q22_3.png" />
+    <Content Include="data\Q23_1.png" />
+    <Content Include="data\Q23_2.png" />
+    <Content Include="data\Q24_FloorMap.png" />
+    <Content Include="data\Q25_FloorMap.png" />
+    <Content Include="data\Q26_1.png" />
+    <Content Include="data\Q26_2.png" />
+    <Content Include="data\Q26_3.png" />
+    <Content Include="data\Q27_1.jpg" />
+    <Content Include="data\Q27_2.jpg" />
+    <Content Include="data\Q27_3.jpg" />
+    <Content Include="data\Q27_4.jpg" />
+    <Content Include="data\Q27_5.jpg" />
+    <Content Include="data\Q28_1.jpg" />
+    <Content Include="data\Q28_2.jpg" />
+    <Content Include="data\Q28_3.jpg" />
+    <Content Include="data\Q28_4.jpg" />
+    <Content Include="data\Q29_FloorMap.png" />
+    <Content Include="data\Q30_1.jpg" />
+    <Content Include="data\Q30_2.jpg" />
+    <Content Include="data\Q30_3.jpg" />
+    <Content Include="data\Q30_4.jpg" />
+    <Content Include="data\Q30_5.jpg" />
+    <Content Include="data\Q31_1.jpg" />
+    <Content Include="data\Q31_2.jpg" />
+    <Content Include="data\Q31_3.jpg" />
+    <Content Include="data\Q31_4.jpg" />
+    <Content Include="data\Q31_5.jpg" />
+    <Content Include="data\Q32.png" />
+    <Content Include="data\Q33.jpg" />
+    <Content Include="data\Q34.jpg" />
+    <Content Include="data\Q3_1.jpg" />
+    <Content Include="data\Q3_2.jpg" />
+    <Content Include="data\Q3_3.jpg" />
+    <Content Include="data\Q3_4.jpg" />
+    <Content Include="data\Q3_5.jpg" />
+    <Content Include="data\Q7_1.jpg" />
+    <Content Include="data\Q7_2.jpg" />
+    <Content Include="data\Q7_3.jpg" />
+    <Content Include="data\Q8_1.jpg" />
+    <Content Include="data\Q8_2.jpg" />
+    <Content Include="data\Q8_3.jpg" />
+    <Content Include="data\Q8_4.jpg" />
+    <Content Include="data\Q8_5.jpg" />
+    <Content Include="data\Q9_1.jpg" />
+    <Content Include="data\Q9_2.jpg" />
+    <Content Include="data\Q9_3.jpg" />
+    <Content Include="data\Q9_4.jpg" />
+    <Content Include="data\Q9_test.jpg" />
+    <Content Include="data\いちご.png" />
+    <Content Include="img\Balloon_01.png" />
+    <Content Include="img\Balloon_02.png" />
+    <Content Include="img\fd400121.jpg" />
+    <Content Include="img\fd400317.jpg" />
+    <Content Include="img\maru2_500.html" />
+    <Content Include="img\sota_01.jpg" />
+    <Content Include="img\sota_01o.jpg" />
+    <Content Include="img\sota_03.jpg" />
     <Content Include="index.htm" />
+    <Content Include="index01.html" />
+    <Content Include="index02.html" />
+    <Content Include="index03_floor.html" />
+    <Content Include="index03.html" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\getdata_floor.js" />
+    <Content Include="js\getdata.js" />
+    <Content Include="js\getdatafromfile.js" />
+    <Content Include="js\jquery-3.1.1.min.js" />
     <Content Include="js\jquery.csvToTable.js" />
     <Content Include="js\npm.js" />
+    <Content Include="style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +257,35 @@
     <Content Include="css\bootstrap-theme.min.css.map" />
     <Content Include="css\bootstrap.css.map" />
     <Content Include="css\bootstrap.min.css.map" />
+    <Content Include="data\beef.csv" />
+    <Content Include="data\body.csv" />
+    <Content Include="data\fruits.csv" />
+    <Content Include="data\gifts.csv" />
+    <Content Include="data\interior.csv" />
+    <Content Include="data\paella.csv" />
+    <Content Include="data\pot.csv" />
+    <Content Include="data\whiteday.csv" />
+    <Content Include="data\Q10.csv" />
+    <Content Include="data\Q11.csv" />
+    <Content Include="data\Q12.csv" />
+    <Content Include="data\Q13.csv" />
+    <Content Include="data\Q14.csv" />
+    <Content Include="data\Q15.csv" />
+    <Content Include="data\Q16.csv" />
+    <Content Include="data\Q17.csv" />
+    <Content Include="data\Q19.csv" />
+    <Content Include="data\Q20.csv" />
+    <Content Include="data\Q22.csv" />
+    <Content Include="data\Q23.csv" />
+    <Content Include="data\Q26.csv" />
+    <Content Include="data\Q27.csv" />
+    <Content Include="data\Q28.csv" />
+    <Content Include="data\Q3.csv" />
+    <Content Include="data\Q30.csv" />
+    <Content Include="data\Q31.csv" />
+    <Content Include="data\Q7.csv" />
+    <Content Include="data\Q8.csv" />
+    <Content Include="data\Q9.csv" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
