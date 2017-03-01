@@ -1,68 +1,108 @@
 /* --- ボックス --- */
+.thumbnail2 img {
+    border-radius: 50%;
+}
+
 div.section1 {
- /*角丸*/
- border-radius: 10px; /* CSS3 */
- -webkit-border-radius: 10px; /* Safari,Google Chrome用 */
- -moz-border-radius: 10px; /* Firefox用 */
- behavior: url(../js/PIE.htc); /* IE用 */
- /*レイアウト*/
- width: 100%;
- text-align: center;
- --padding: center;
- vertical-align: middle;
- border:3px solid;
- border-color:#008000;
- background-color: #ffffff;
+    /*角丸*/
+    border-radius: 10px; /* CSS3 */
+    -webkit-border-radius: 10px; /* Safari,Google Chrome用 */
+    -moz-border-radius: 10px; /* Firefox用 */
+    behavior: url(../js/PIE.htc); /* IE用 */
+    /*レイアウト*/
+    width: 100%;
+    text-align: center;
+    --padding: center;
+    vertical-align: middle;
+    border:3px solid;
+    border-color:#008000;
+    background-color: #ffffff;
+}
+
+div.section2 {
+    /*角丸*/
+    border-radius: 10px; /* CSS3 */
+    -webkit-border-radius: 10px; /* Safari,Google Chrome用 */
+    -moz-border-radius: 10px; /* Firefox用 */
+    behavior: url(../js/PIE.htc); /* IE用 */
+    /*レイアウト*/
+    width: 100%;
+    text-align: center;
+    --padding: center;
+    vertical-align: middle;
+    border:0px solid;
+    border-color:#008000;
+    background-color: #ffffff;
 }
 
 p{
-margin: 0.3em 0px 0.2em 0px;
-font-size:600%;
-font-weight:bold;
-font-family: "メイリオ";
-color:#008000;
+    margin: 0.3em 0px 0.2em 0px;
+    font-size:200%;
+    font-weight:bold;
+    font-family: "メイリオ";
+    color:#008000;
 }
-h1.sota{
-margin: 0.3em 0px 0.2em 0px;
-font-size:400%;
-font-weight:bold;
-font-family: "メイリオ";
-color:#00c0c0;
+p.title{
+    border-left:5px solid #92d050;
+    padding-left:0.3em;
+    margin-left:0.3em;
+    font-weight:bold;
+    font-family: "メイリオ";
+    color:#848484;
+    display:inline;
+}
+p.titleicon{
+    color:#92d050;
+    font-size:200%;
+    display:inline;
 }
 
+h1.sota{
+    margin: 0.3em 0px 0.2em 0px;
+    font-size:400%;
+    font-weight:bold;
+    font-family: "メイリオ";
+    color:#00c0c0;
+}
 h2.sota{
-margin: 0.3em 0px 0 0px;
-font-size:150%;
-color:#00c000;
-text-align:left;
+    margin: 0.3em 0px 0 0px;
+    font-size:150%;
+    color:#00c000;
+    text-align:left;
+}
+h2.sota-c {
+    margin: 0.3em 0px 0 0px;
+    font-size: 50px;
+    color: #00c000;
+    text-align: center;
 }
 h3.sota{
--webkit-margin-before:0em;
--webkit-margin-after:0em;
-font-size:80%;
-font-weight:400;
-color:#00c000;
-text-align:left;
+    -webkit-margin-before:0em;
+    -webkit-margin-after:0em;
+    font-size:80%;
+    font-weight:400;
+    color:#00c000;
+    text-align:left;
 }
 
 
 /*点滅*/
 .switch {
- -webkit-animation: switchtext 0.8s infinite alternate;
- -moz-animation: switchtext 0.8s infinite alternate;
- animation: switchtext 0.8s infinite alternate;
+    -webkit-animation: switchtext 0.8s infinite alternate;
+    -moz-animation: switchtext 0.8s infinite alternate;
+    animation: switchtext 0.8s infinite alternate;
 }
 @-webkit-keyframes switchtext {
- from { opacity: 1.0; }
- to { opacity: 0.2; }
+    from { opacity: 1.0; }
+    to { opacity: 0.2; }
 }
 @-moz-keyframes switchtext {
- from { opacity: 1.0; }
- to { opacity: 0.2; }
+    from { opacity: 1.0; }
+    to { opacity: 0.2; }
 }
 @keyframes switchtext {
- from { opacity: 1.0; }
- to { opacity: 0.2; }
+    from { opacity: 1.0; }
+    to { opacity: 0.2; }
 }
 /*吹き出し*/
 .arrow_box {
@@ -108,6 +148,7 @@ text-align:left;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
 	z-index: 0;
+    display:table;
 }
 .balloon-1-top:before {
 	content: "";
@@ -137,21 +178,20 @@ text-align:left;
 }
 /* balloon-1 right */
 .balloon-1-right {
-	position: relative;
-	display: inline-block;
-	padding: 0 15px;
-	width: 800px;
-	min-width: 115px;
-	height: 210px ;
+    padding: 0 15px;
+    width:100%;
+	/*min-width: 115px;*/
+	height: 210px;
 	line-height: 34px;
 	color: #00c0c0;
 	text-align: center;
 	vertical-align: middle;
-	background: #F6F6F6;
+	/*background: #F6F6F6;*/
 	border: 3px solid #00c0c0;
-  -moz-border-radius: 6px;
-  -webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
 	z-index: 0;
+    position: relative;
 }
 .balloon-1-right:before {
 	content: "";
@@ -393,3 +433,60 @@ text-align:left;
         width: 0; 
         height: 0; 
       }
+
+table.ans {
+    border-spacing:0;
+    border-collapse:collapse
+}
+td.ans {
+    padding:0;
+    font-size:30px;
+    font-weight:bold;
+    font-family: "メイリオ";
+    color:#008000;
+	text-align: center;
+    display:table-cell;
+	vertical-align: middle;
+}
+th.ans {
+    padding:0;
+    font-size:24px;
+    font-weight:bold;
+    font-family: "メイリオ";
+    color:#008000;
+	text-align: center;
+    display:table-cell;
+	vertical-align: middle;
+}
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th{
+    padding:8px;
+    line-height:1.5;
+    vertical-align:middle;
+    border-top:1px solid #ddd
+    }
+
+hr {
+    height: 1px;
+    border: none;
+    border-top: 2px #ddd solid;
+}
+
+.table-noborder {
+    border-top: 0px !important;
+    border-bottom: 0px !important;
+}
+
+.flexiblebox {
+    display: flex;
+    align-items: center; /* 縦方向中央揃え */
+    justify-content: center; /* 横方向中央揃え */
+}
+
+.background-position{
+    background: url(img/sota_01.jpg) no-repeat center #ccc;
+}
