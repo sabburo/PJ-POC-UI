@@ -100,6 +100,8 @@
     <Content Include="css\bootstrap-theme.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\font-awesome.min.css" />
     <Content Include="data\Cash-Register-Blue.ico" />
     <Content Include="data\FloorMap.png" />
     <Content Include="data\Q10_1.jpg" />
@@ -199,6 +201,7 @@
     <Content Include="data\Q9_4.jpg" />
     <Content Include="data\Q9_test.jpg" />
     <Content Include="data\いちご.png" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="img\Balloon_01.png" />
     <Content Include="img\Balloon_02.png" />
     <Content Include="img\fd400121.jpg" />
@@ -207,6 +210,7 @@
     <Content Include="img\sota_01.jpg" />
     <Content Include="img\sota_01o.jpg" />
     <Content Include="img\sota_03.jpg" />
+    <Content Include="img\talk.png" />
     <Content Include="index.htm" />
     <Content Include="index01.html" />
     <Content Include="index02.html" />
@@ -219,7 +223,6 @@
     <Content Include="js\getdatafromfile.js" />
     <Content Include="js\jquery-3.1.1.min.js" />
     <Content Include="js\jquery.csvToTable.js" />
-    <Content Include="js\load.js" />
     <Content Include="js\npm.js" />
     <Content Include="style.css" />
     <Content Include="Web.config" />
@@ -287,6 +290,11 @@
     <Content Include="data\Q7.csv" />
     <Content Include="data\Q8.csv" />
     <Content Include="data\Q9.csv" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
