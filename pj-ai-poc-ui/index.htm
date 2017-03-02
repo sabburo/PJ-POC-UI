@@ -1,25 +1,3 @@
-<!-- 
-Microsoft Speech SDK
-====================
-
-
-FEATURES
---------
-* Short-form recognition.
-* Long-form dictation.
-* Recognition with intent.
-* Integrated microphone support.
-* External audio support.
-
-LICENSE
--------
-© 2015 Microsoft. All rights reserved.  
-This document is provided “as-is”. Information and views expressed in this document, including URL and other Internet Web site references, may change without notice.  
-Some examples depicted herein are provided for illustration only and are fictitious.  No real association or connection is intended or should be inferred. 
-This document does not provide you with any legal rights to any intellectual property in any Microsoft product. You may copy and use this document for your internal, reference purposes. This 
-document is confidential and proprietary to Microsoft. It is disclosed and can be used only pursuant to a non-disclosure agreement. 
--->
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -31,6 +9,7 @@ document is confidential and proprietary to Microsoft. It is disclosed and can b
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.csvToTable.js"></script>
+    <script src="js/jquery.csv2table-0.02-b-4.8.js"></script>
     <script type="text/javascript">
         function init() {
             try{
@@ -68,7 +47,35 @@ document is confidential and proprietary to Microsoft. It is disclosed and can b
                             case "endApplication":
                                 dendApplication();
                                 break;
+                            //以下は聞き取れなかったケース
+                            case "unknown1":
+                                unknown();
+                                $("#sotasays").html("ごめんなさい。</br>もう一回聞かせてほしいなぁ？");
+                                break;
+                            case "unknown2":
+                                unknown();
+                                $("#sotasays").html("お仕事も大事だけど、</br>今は縁側でお茶飲みながらのんびりしたいなぁ。");
+                                break;
+                            case "unknown3":
+                                unknown();
+                                $("#sotasays").html("実は最近悩んでいて・・・</br>一緒にお酒でも飲みませんか？");
+                                break;
+                            case "unknown4":
+                                unknown();
+                                $("#sotasays").html("僕は、ドラえもんじゃなくて、ソータだよ！");
+                                break;
+                            case "unknown5":
+                                unknown();
+                                $("#sotasays").html("社長さん、儲かってまっか？");
+                                break;
                         }
+                        
+                        if (jsonData["MsgId"] == 0) {
+                            var data = jsonData["Text"].split("#");
+                            $("#sotasays").html(data[0]);
+                            showAnswer(data[1],data[2]);
+                        }
+
                     }
                  }
 
@@ -88,56 +95,56 @@ document is confidential and proprietary to Microsoft. It is disclosed and can b
 
         function waitFace() {
             //$('#page').load('01_search.html');
-            $("#titletext").text("お話相手を探し中です・・・");
+            $("#titletext").text("おはなし相手を探しています・・・");
             $("#sotasays").html("ボクと目を合わせてね")
-            $("#titleicons").removeClass("fa fa-volume-control-phone").removeClass("fa fa-volume-up").addClass("fa fa-user-o");
-            $("#dynamicarea").html('<div class="switch" style="width:100%;text-align:center;color:#e00000;font-size:70px"><font face="メイリオ"><B>目を合わせると会話が開始します</B></font></div>')
+            $("#titleIcons").removeClass("fa fa-volume-control-phone").removeClass("fa fa-volume-up").addClass("fa fa-user-o");
+            $("#dynamicArea").html('<div class="switch" style="width:100%;text-align:center;color:#e00000;font-size:70px"><font face="メイリオ"><B>目を合わせると会話が開始します</B></font></div>')
         }
 
         function waitQuestion() {
             //$('#page').load('02_listen.html');
-            $("#titletext").text("話かけられるのを待ってます");
+            $("#titletext").text("質問を待ってます");
             $("#sotasays").html("いらっしゃいませ！<br>なにかご用ですか？")
-            $("#titleicons").removeClass("fa fa-user").removeClass("fa fa-volume-up").addClass("fa fa-volume-control-phone");
-            $("#dynamicarea").html('<div class="switch" style="width:100%;text-align:center;color:#e00000;font-size:70px"><font face="メイリオ"><B>目が青くなったら、質問してね！</B></font></div>')
+            $("#titleIcons").removeClass("fa-user-o").removeClass("fa fa-volume-up").addClass("fa fa-volume-control-phone");
+            $("#dynamicArea").html('<div class="switch" style="width:100%;text-align:center;color:#e00000;font-size:70px"><font face="メイリオ"><B>目が青くなったら、質問してね！</B></font></div>')
         }
 
-        function showAnswer() {
-            //$('#page').load('03_answer.html');
-            ("#titletext").text("答えます");
-        }
-
-        function endApplication() {
-            document.getElementById("output").value = "終了";
-        }
-
-
-        function setCommodityTable(text) {
-            metatag = text.split("#");
-            metatag_t = metatag[1].trim();
-            switch (metatag_t) {
-                case "バナナ":
-                    $('#dt-commodity').CSVToTable('data/banana.csv');
+        function showAnswer(action, src) {
+            $("#titletext").text("答えてくれます");
+            $("#titleIcons").removeClass("fa-user-o").removeClass("fa fa-volume-control-phone").addClass("fa fa-volume-up");
+            $("#sotaImage").attr('src', 'img/sota_03.jpg');
+            //$("#dynamicArea").load('03_answerin.html');
+            $("#dynamicArea").text('')
+            switch (action) {
+                case "list":
+                    //$("#dynamicArea").load('03_answerin.html');
+                    $("#dynamicArea").html('<table id="dt-commodity"class="table table-striped table-responsive"></table>');
+                    //$('#dt-commodity').CSVToTable(src);
+                    $('#dt-commodity').csv2table(src);
                     break;
-                case "生姜":
-                    $('#dt-commodity').CSVToTable('data/ginger.csv');
+                case "img":
+                    $("#dynamicArea").html('<img id="ansImg" src="img/sota_01.jpg" class="media-object img-rounded img-responsive flexiblebox"/>');
+                    $("#ansImg").attr('src', src);
                     break;
-                case "にんじん":
-                    $('#dt-commodity').CSVToTable('data/carrot.csv');
+                case "noaction":
                     break;
-                case "グレープフルーツ":
-                    $('#dt-commodity').CSVToTable('data/grapefruit.csv');
-                    break;
-                case "アーモンド":
-                    $('#dt-commodity').CSVToTable('data/almond.csv');
-                    break;
-                case "金柑":
-                    $('#dt-commodity').CSVToTable('data/kumquat.csv');
+                case null:
                     break;
             }
-            document.getElementById("label1").innerHTML = "おすすめの商品"
-        }
 
+            function unknown() {
+                //$('#page').load('03_answer.html');
+                $("#titletext").text("うまく聞き取れなかったみたい・・・");
+                $("#titleIcons").removeClass("fa fa-user").removeClass("fafa-volume-control-phone").addClass("fa fa fa-volume-up");
+                $("#sotaImage").attr('src', 'img/sota_03.jpg');
+                $("#dynamicArea").text('')
+            }
+
+            function endApplication() {
+                document.getElementById("output").value = "終了";
+            }
+
+        }
         init();
     </script>
 </head>
@@ -151,11 +158,12 @@ document is confidential and proprietary to Microsoft. It is disclosed and can b
         <div class="row"><div class="col-md-12"><p></p> </div> </div>
         <div class="row">
             <div class="col-md-12">
-                <p class="titleicon"><i id="titleicons" class="fa fa-chain-broken" aria-hidden="true"></i></p>
-                <p id="titletext" class="title">開始したらここが変わります</p>
+                <div class="titleset">
+                    <p class="titleicon"><i id="titleIcons" class="fa fa-chain-broken" aria-hidden="true"></i></p>
+                    <p id="titletext" class="title">開始したらここが変わります</p>
+                </div>
             </div>
         </div>
-        <hr/>
         <div class="row flexiblebox">
             <div class="col-md-9">
                 <div class="balloon-1-right flexiblebox" display:inline;>
@@ -163,12 +171,12 @@ document is confidential and proprietary to Microsoft. It is disclosed and can b
                 </div>
             </div>
             <div class="col-md-3 flexiblebox">
-                <img src="img/sota_01.jpg" class="media-object img-circle img-responsive flexiblebox">
+                <img id="sotaImage" src="img/sota_01.jpg" class="media-object img-circle img-responsive flexiblebox"/>
             </div>
         </div>
-        <hr/>
+        <hr />
         <div class="row">
-            <div id="dynamicarea">
+            <div id="dynamicArea" class="center-block">
             </div>
         </div>
     </div>

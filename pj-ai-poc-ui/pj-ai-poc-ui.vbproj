@@ -149,6 +149,7 @@
     <Content Include="data\Q20_2.png" />
     <Content Include="data\Q20_3.png" />
     <Content Include="data\Q20_4.png" />
+    <Content Include="data\Q21_FroorMap.jpg" />
     <Content Include="data\Q22_1.png" />
     <Content Include="data\Q22_2.png" />
     <Content Include="data\Q22_3.png" />
@@ -221,8 +222,11 @@
     <Content Include="js\getdata_floor.js" />
     <Content Include="js\getdata.js" />
     <Content Include="js\getdatafromfile.js" />
+    <Content Include="js\jquery-1.7.2.min.js" />
     <Content Include="js\jquery-3.1.1.min.js" />
+    <Content Include="js\jquery.csv2table-0.02-b-4.8.js" />
     <Content Include="js\jquery.csvToTable.js" />
+    <Content Include="js\jquery.jqchart-0.03-beta-1.1.js" />
     <Content Include="js\npm.js" />
     <Content Include="style.css" />
     <Content Include="Web.config" />
