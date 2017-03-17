@@ -168,7 +168,7 @@
                 function open() {
                     if (ws == null) {
                         // WebSocket の初期化
-                        ws = new WebSocket(websocketUri);
+                        ws = new WebSocket(websocketUri);   
                     }
                 }
 
@@ -316,6 +316,14 @@
 
         }
         init();
+
+        var POLLLING_INVERVAL_TIME_IN_MILLIS = 500;//0.5s
+        
+        $(function polling() {
+            talkWithBot.getMessage( talkWithBot.convId );
+            window.setTimeout(polling, POLLLING_INVERVAL_TIME_IN_MILLIS);
+        }());
+
     </script>
 </head>
 <body style="background-color:white">
