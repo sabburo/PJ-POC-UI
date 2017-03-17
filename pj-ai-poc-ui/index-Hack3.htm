@@ -265,8 +265,8 @@
 
         //「検索」ボタンを選択
         $(document).on('click', '#search', function () {
-            console.log((searchword).val())
-            talkWithBot.sendMessage(talkWithBot.convId, (searchword).val())            
+            console.log($("#searchword").val())
+            talkWithBot.sendMessage(talkWithBot.convId, $("#searchword").val())
         });
 
 
