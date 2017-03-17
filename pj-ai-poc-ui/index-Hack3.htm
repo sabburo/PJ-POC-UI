@@ -14,23 +14,16 @@
     <script src="js/jquery.csv2table-0.02-b-4.8.js"></script>
     <script type="text/javascript">
          
-
-
     // DirectLine
     var talkWithBot = (function () {
             return {
-
                 // Plase set your secretKey
                 directLineSecret: "zV0HkdnH_X4.cwA.drg.hNxhBVv3gHH-n8jJt3t_lFigzBz93_GaF97t2aZsG7w",
-
                 convId: null,
                 watermark: null,
-
                 // ▼カンバセーションIDを作成
                 makeConvId: function () {
-
                     console.log("makeConvId");
-
                     return $.ajax({
                         url: "https://directline.botframework.com/api/conversations",
                         type: "POST",
@@ -46,16 +39,11 @@
                             console.log(errorThrown);
                         }
                     });
-
                 },
-
                 // ▼メッセージを送信
                 sendMessage: function (convId, msg) {
-
                     $('#input').val("送信中...");
-
                     var user = "user_" + convId;
-
                     $.ajax({
                         method: "POST",
                         contentType: "application/json",
@@ -72,21 +60,16 @@
                             $('#input').val("");
                         }
                     });
-
                 },
-
                 // ▼メッセージを取得する
                 getMessage: function (convId, watermark) {
-
                     var url;
-
                     // ウォーターマークの有無により、URLの分岐
                     if (watermark) {
                         url = 'https://directline.botframework.com/api/conversations/' + convId + '/messages?watermark=' + watermark;
                     } else {
                         url = 'https://directline.botframework.com/api/conversations/' + convId + '/messages';
                     }
-
                     return $.ajax({
                         method: "GET",
                         contentType: "application/json",
@@ -95,13 +78,10 @@
                         },
                         url: url,
                         success: function (obj) {
-
                             // textareに、結果を出力
                             $("#textarea").val(JSON.stringify(obj.messages));
-
                             // watermarkの更新
                             talkWithBot.watermark = obj.watermark;
-
                             //クッキーにも保存(30分間)
                             var date = new Date();
                             date.setTime(date.getTime() + (30 * 60 * 1000));
@@ -109,42 +89,112 @@
                                 expires: date
                             });
 
+
+							//PoC向けオブジェクト生成箇所
+
+
+
+			
+                            //回答された会話ログを全部取得して、最後の２つの情報を取得する
+                            var conversationArray = _.last(obj.messages,2);
+                            var sendMessage = _.values(_.pick(conversationArray[0],'text'));
+                            var receivedMessage = _.values(_.pick(conversationArray[1],'text'));
+                            var id = _.values(_.pick(conversationArray[1],'id'))
+                            var idArray = id[0].split('|');
+
+                            //２つ目の回答がcgpocの場合に処理中である旨を回答する
+                            var lastMassagefrom = _.values(_.pick(conversationArray[1],'from'))[0];
+
+
+                            //新たなオブジェクトの作成
+                            var pocObject = {};
+                            pocObject.Msg = sendMessage[0];
+                            pocObject.Text = receivedMessage[0];
+                            pocObject.ConversationId = idArray[0]; 
+                            pocObject.MsgId = idArray[1];
+
+                            //TODO ユーザーがcgpocであることを前提にしているので今後は修正が必要
+                            if (lastMassagefrom == "cgpoc"){
+                                pocObject.DestStatus = "showAnswer"
+                            } else {
+                                pocObject.DestStatus = "waiting"
+                            }
+                            
+                            console.log(JSON.stringify(pocObject));
+
+
+
+                            //var jsonData = JSON.parse(pocObject);
+                        // 状態により画面表示を切り替える
+							console.log(pocObject.DestStatus);
+                        switch (pocObject.DestStatus) {
+                            case "waitFace":
+                                waitFace();
+                                break;
+                            case "waitQuestion":
+                                waitQuestion();
+                                break;
+                            case "showAnswer":
+								console.log("show answer");
+                                showAnswer();
+                                break;
+                            case "endApplication":
+                                dendApplication();
+                                break;
+                            //以下は聞き取れなかったケース
+                            case "unknown1":
+                                unknown();
+                                $("#sotasays").html("ごめんなさい。</br>もう一回聞かせてほしいなぁ？");
+                                break;
+                            case "unknown2":
+                                unknown();
+                                $("#sotasays").html("お仕事も大事だけど、</br>今は縁側でお茶飲みながらのんびりしたいなぁ。");
+                                break;
+                            case "unknown3":
+                                unknown();
+                                $("#sotasays").html("実は最近悩んでいて・・・</br>一緒にお酒でも飲みませんか？");
+                                break;
+                            case "unknown4":
+                                unknown();
+                                $("#sotasays").html("僕は、ドラえもんじゃなくて、ソータだよ！");
+                                break;
+                            case "unknown5":
+                                unknown();
+                                $("#sotasays").html("社長さん、儲かってまっか？");
+                                break;
+			}
+
+			                       
+                            var data = pocObject.Text.split("#");
+                            $("#sotasays").html(data[0]);
+                            showAnswer(data[1],data[2]);
+                        
+			
+
+
+			
                         }
                     });
                 },
                 // 初期動作 (カンバセーションIDを用意する)
                 init: function () {
-
                     // クッキーにwatermarkがあれば、それを再利用
                     if ($.cookie("watermark")) {
                         talkWithBot.watermark = $.cookie("watermark");
                     }
-
-
                     if ($.cookie("conversationId")) {
-
                         // すでにクッキーにカンバセーションIDがある場合、クッキーのものを再利用
-
                         talkWithBot.convId = $.cookie("conversationId");
-
                         // カンバセーションIDを表示、準備完了！
                         $("#convId").text(talkWithBot.convId + " 準備OK!");
-
-
-
                     } else {
-
                         // ない場合は、APIにリクエストして作成する
-
                         talkWithBot
                             .makeConvId()
                             .then(function (result) {
-
                                 talkWithBot.convId = result.conversationId;
-
                                 // カンバセーションIDを表示、準備完了！
                                 $("#convId").text(talkWithBot.convId + " 準備OK!");
-
                                 // Cookieに保存(30分間を期限)
                                 var date = new Date();
                                 date.setTime(date.getTime() + (30 * 60 * 1000));
@@ -153,40 +203,32 @@
                                 });
                             });
                     }
-
                 }
-
             };
-
         })();
-
         //はじまり
         function init() {
+
+        	
             try{
                 ws = new WebSocket('ws://' + 'aipocweb.azurewebsites.net' + '/apis/wsserver');
-
                 function open() {
                     if (ws == null) {
                         // WebSocket の初期化
                         ws = new WebSocket(websocketUri);   
                     }
                 }
-
                 //ConversationIDの取得
                 talkWithBot.init();
-
-
                 // 接続イベント
                 ws.onopen = function onOpen(evt) {
                     //ここで待受け画面に切り替える
                     waitFace();
                 }
-
                  // メッセージ受信イベント
                 ws.onmessage = function onMessage(evt) {
                     if (evt && evt.data) {
                         var jsonData = JSON.parse(evt.data);
-
                         // 状態により画面表示を切り替える
                         switch (jsonData["destStatus"]) {
                             case "waitFace":
@@ -223,21 +265,17 @@
                                 $("#sotasays").html("社長さん、儲かってまっか？");
                                 break;
                         }
-
                         if (jsonData["MsgId"] == 0) {
                             var data = jsonData["Text"].split("#");
                             $("#sotasays").html(data[0]);
                             showAnswer(data[1],data[2]);
                         }
-
                     }
                  }
-
                  // エラーイベント
                  ws.onerror = onError =  function onError(event) {
                      alert("エラーが発生しました");
                  }
-
                  // 切断イベント
                  ws.onclose = function onClose(event) {
                      //chat("切断しました。3秒後に再接続します。(" + event.code + ")");
@@ -246,7 +284,6 @@
                  }
             } catch (e) { alert(e.message); }
         };
-
         function waitFace() {
             //$('#page').load('01_search.html');
             $("#titletext").text("質問を待っています");
@@ -254,7 +291,6 @@
             $("#titleIcons").removeClass("fa fa-volume-control-phone").removeClass("fa fa-volume-up").addClass("fa fa-user-o");
             $("#dynamicArea").html('<div class="col-md-12"><p><input type="button" class="btn btn-primary" value="お店の人をよぶ" style="font-size:28px; width:400px; height:100px" onclick="history.back()"> <input type="button" class="btn btn-primary" value="場所を案内してもらう" style="font-size:28px; width:400px; height:100px" onclick="history.back()"></p><p><input type="button" class="btn btn-primary" value="いっしょにあそぶ" style="font-size:28px; width:400px; height:100px" onclick="history.back()"> <input type="button" id="findGoods"class="btn btn-primary" value="おすすめ商品をきく" style="font-size:28px; width:400px; height:100px" onclick="history.back()"></p></div>')
         }
-
        //「おすすめ商品」を選択したあと
         $(document).on('click', '#findGoods', function () {
             console.log("おすすめ押された");
@@ -262,15 +298,11 @@
             $("#titleIcons").removeClass("fa fa-volume-control-phone").removeClass("fa fa-volume-up").addClass("fa fa-user-o");
             $("#dynamicArea").html('<div class="col-md-12"><div class="form-group"><div class="row"><div class="col-xs-6"><input type="text" id="searchword" name="searchwrd" class="form-control input-lg" size="30"></div><input type="image" id="search" name="btnsearch" src="img/search.png" alt="さがす" style="width:45px; height:45px"></div></div></div>')
         });
-
         //「検索」ボタンを選択
         $(document).on('click', '#search', function () {
             console.log($("#searchword").val())
             talkWithBot.sendMessage(talkWithBot.convId, $("#searchword").val())
         });
-
-
-
         //function waitQuestion() {
         //    //$('#page').load('02_listen.html');
         //    $("#titletext").text("質問を待ってます");
@@ -278,7 +310,6 @@
         //    $("#titleIcons").removeClass("fa-user-o").removeClass("fa fa-volume-up").addClass("fa fa-volume-control-phone");
         //    $("#dynamicArea").html('<div class="switch" style="width:100%;text-align:center;color:#e00000;font-size:70px"><font face="メイリオ"><B>目が青くなったら、質問してね！</B></font></div>')
         //}
-
         function showAnswer(action, src) {
             $("#titletext").text("答えてくれます");
             $("#titleIcons").removeClass("fa-user-o").removeClass("fa fa-volume-control-phone").addClass("fa fa-volume-up");
@@ -301,7 +332,6 @@
                 case null:
                     break;
             }
-
             function unknown() {
                 //$('#page').load('03_answer.html');
                 $("#titletext").text("うまく聞き取れなかったみたい・・・");
@@ -309,22 +339,13 @@
                 $("#sotaImage").attr('src', 'img/sota_03.jpg');
                 $("#dynamicArea").text('')
             }
-
             function endApplication() {
                 document.getElementById("output").value = "終了";
             }
-
         }
         init();
 
-        var POLLLING_INVERVAL_TIME_IN_MILLIS = 500;//0.5s
-        
-        $(function polling() {
-            talkWithBot.getMessage( talkWithBot.convId );
-            window.setTimeout(polling, POLLLING_INVERVAL_TIME_IN_MILLIS);
-        }());
-
-    </script>
+		</script>
 </head>
 <body style="background-color:white">
     <div class="container-fluid">
@@ -374,5 +395,8 @@
             </div>
         </div>
     </div>
+		        <div style="margin:20px 0;">
+            <button type="button" onclick="javascript: talkWithBot.getMessage( talkWithBot.convId )">メッセージ取得</button>
+        </div>
 </body>
 </html>
