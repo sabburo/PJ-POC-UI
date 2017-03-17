@@ -252,7 +252,7 @@
             $("#titletext").text("質問を待っています");
             $("#sotasays").html("ぼくにしてほしいことはなにかな？")
             $("#titleIcons").removeClass("fa fa-volume-control-phone").removeClass("fa fa-volume-up").addClass("fa fa-user-o");
-            //$("#dynamicArea").html('<div class="col-md-12"><p><input type="button" class="btn btn-primary" value="お店の人をよぶ" style="font-size:28px; width:400px; height:100px" onclick="history.back()"> <input type="button" class="btn btn-primary" value="場所を案内してもらう" style="font-size:28px; width:400px; height:100px" onclick="history.back()"></p><p><input type="button" class="btn btn-primary" value="いっしょにあそぶ" style="font-size:28px; width:400px; height:100px" onclick="history.back()"> <input type="button" id="findGoods"class="btn btn-primary" value="おすすめ商品をきく" style="font-size:28px; width:400px; height:100px" onclick="history.back()"></p></div>')
+            $("#dynamicArea").html('<div class="col-md-12"><p><input type="button" class="btn btn-primary" value="お店の人をよぶ" style="font-size:28px; width:400px; height:100px" onclick="history.back()"> <input type="button" class="btn btn-primary" value="場所を案内してもらう" style="font-size:28px; width:400px; height:100px" onclick="history.back()"></p><p><input type="button" class="btn btn-primary" value="いっしょにあそぶ" style="font-size:28px; width:400px; height:100px" onclick="history.back()"> <input type="button" id="findGoods"class="btn btn-primary" value="おすすめ商品をきく" style="font-size:28px; width:400px; height:100px" onclick="history.back()"></p></div>')
         }
 
        //「おすすめ商品」を選択したあと
@@ -260,7 +260,7 @@
             console.log("おすすめ押された");
             $("#sotasays").html("気になることばを入力してね")
             $("#titleIcons").removeClass("fa fa-volume-control-phone").removeClass("fa fa-volume-up").addClass("fa fa-user-o");
-            $("#dynamicArea").html('<div class="col-md-12"><div class="form-group"><div class="row"><div class="col-xs-6"><input type="text" name="email" class="form-control input-lg" size="30"></div><input type="image" name="btnsearch" src="img/search.png" alt="さがす" style="width:45px; height:45px" class="blink"></div></div></div> ')
+            $("#dynamicArea").html('<div class="col-md-12"><div class="form-group"><div class="row"><div class="col-xs-6"><input type="text" id="searchword" name="searchwrd" class="form-control input-lg" size="30"></div><input type="image" id="search" name="btnsearch" src="img/search.png" alt="さがす" style="width:45px; height:45px"></div></div></div>')
         });
 
         //「検索」ボタンを選択
@@ -347,23 +347,22 @@
         <hr />
         <div class="row">
             <div id="dynamicArea" class="center-block">
-                <div class="col-md-12">
+                <!--<div class="col-md-12">
                     <p><input type="button" class="btn btn-primary" value="お店の人をよぶ" style="font-size:28px; width:400px; height:100px" onclick="history.back()">
                         <input type="button" class="btn btn-primary" value="場所を案内してもらう" style="font-size:28px; width:400px; height:100px" onclick="history.back()"></p>
                     <p><input type="button" class="btn btn-primary" value="いっしょにあそぶ" style="font-size:28px; width:400px; height:100px" onclick="history.back()">
                         <input type="button" id="findGoods"class="btn btn-primary" value="おすすめ商品をきく" style="font-size:28px; width:400px; height:100px" onclick="history.back()"></p>
-                </div>
-                <div class="col-md-12">
+                </div>-->
+                <!--<div class="col-md-12">
                     <div class="form-group">
                         <div class="row">
                                 <div class="col-xs-6">
                                     <input type="text" id="searchword" name="searchwrd" class="form-control input-lg" size="30">
                                 </div>
-                                    <input type="image" id="search" name="btnsearch" src="img/search.png" alt="さがす" style="width:45px; height:45px">
-                                </div>
+                                    <input type="image" id="search" name="btnsearch" src="img/search.png" alt="さがす" style="width:45px; height:45px">                                
                         </div>
                     </div>
-                </div> 
+                </div>--> 
             </div>
         </div>
     </div>
