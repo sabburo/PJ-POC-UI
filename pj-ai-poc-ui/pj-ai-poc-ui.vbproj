@@ -210,10 +210,13 @@
     <Content Include="img\fd400121.jpg" />
     <Content Include="img\fd400317.jpg" />
     <Content Include="img\maru2_500.html" />
+    <Content Include="img\search.png" />
     <Content Include="img\sota_01.jpg" />
     <Content Include="img\sota_01o.jpg" />
     <Content Include="img\sota_03.jpg" />
     <Content Include="img\talk.png" />
+    <Content Include="index-Hack3.htm" />
+    <Content Include="index-Hack2.htm" />
     <Content Include="index.htm" />
     <Content Include="index01.html" />
     <Content Include="index02.html" />
